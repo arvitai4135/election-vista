@@ -2,40 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Election Analytics Platform Design System */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
+    /* Election Analytics Color Palette */
+    --primary: 213 100% 50%;        /* Trust Blue #007BFF */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 213 100% 85%;
+    
+    --success: 134 61% 41%;          /* Data Green #28A745 */
+    --success-foreground: 0 0% 100%;
+    --success-light: 134 41% 88%;
+    
+    --warning: 25 85% 53%;           /* Accent Orange #FD7E14 */
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 25 85% 88%;
+    
+    --secondary: 210 16% 98%;        /* Light Gray #F8F9FA */
+    --secondary-foreground: 210 9% 31%; /* Dark Gray #6C757D */
+    
+    --muted: 210 16% 98%;
+    --muted-foreground: 210 9% 45%;
+    
+    --accent: 213 100% 96%;
+    --accent-foreground: 213 100% 50%;
+    
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
+    
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --ring: 213 100% 50%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-data: linear-gradient(90deg, hsl(var(--success)), hsl(var(--success-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--warning)), hsl(var(--warning-light)));
+    
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-hero: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -100,6 +111,50 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+  }
+  
+  .btn-hero-secondary {
+    @apply bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300;
+  }
+  
+  /* Feature Cards */
+  .feature-card {
+    @apply bg-card rounded-xl p-6 shadow-[var(--shadow-card)] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border border-border/50;
+  }
+  
+  /* Gradient Backgrounds */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-data {
+    background: var(--gradient-data);
+  }
+  
+  /* Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Animated Elements */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-up.in-view {
+    @apply opacity-100 translate-y-0;
   }
 }
